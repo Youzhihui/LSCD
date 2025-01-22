@@ -24,8 +24,8 @@ code is still being organized and constantly updated
 - Crop all datasets into 256x256 patches.
 - Generate list file as `ls -R ./label/* > test.txt`
 - Generate image-level annotations as `...`
-    - ./datasets/LEVIR-CD/imagelevel_labels.npy
-    - ./datasets/WHU-CD/imagelevel_labels.npy
+    - `./datasets/LEVIR/imagelevel_labels.npy`
+    - `./datasets/WHU/imagelevel_labels.npy`
 - Prepare datasets into following structure and set their path in `train.py` and `test.py`
   ```
   ├─A
