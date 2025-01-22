@@ -6,11 +6,10 @@ import os
 
 
 @er.registry.DATASET.register()
-class LEVIRCD(BitemporalDataset, er.ERDataset):
+class S2Looking(BitemporalDataset, er.ERDataset):
     def __init__(self, cfg):
         er.ERDataset.__init__(self, cfg)
-
-        A_image_fps = sorted(glob.glob(os.path.join(self.cfg.dataset_dir, 'A', '*.png')))
+        A_image_fps = sorted(glob.glob(os.path.join(self.cfg.dataset_dir, 'Image1', '*.png')))
         N = len(A_image_fps)
         if self.cfg.subsample_ratio < 1.0:
             split = math.floor(len(A_image_fps) * self.cfg.subsample_ratio)
@@ -20,8 +19,8 @@ class LEVIRCD(BitemporalDataset, er.ERDataset):
             A_image_fps = A_image_fps[:N]
             er.info(f'use subsample ratio of {self.cfg.subsample_ratio}, {split} training samples')
 
-        B_image_fps = [fp.replace('A', 'B') for fp in A_image_fps]
-        gt_fps = [fp.replace('A', 'label') for fp in A_image_fps]
+        B_image_fps = [fp.replace('Image1', 'Image2') for fp in A_image_fps]
+        gt_fps = [fp.replace('Image1', 'label') for fp in A_image_fps]
 
         super().__init__(
             t1_image_fps=A_image_fps,
