@@ -10,7 +10,7 @@ Repo is created in 2025-01-22. Code will come soon.
     <img src="assest/Overview.png"/> <br />
 </p>
 
-`Weakly supervised change detection (WSCD) seeks to segment changed objects in remote sensing (RS) bi-temporal images using image-level annotations. Recent WSCD works commonly utilize class activation map (CAM) to generate pixel-level seeds for training change detection (CD) models. However, CAM-derived seeds often lack object-awareness, leading to inaccurate boundary delineation. In contrast, segment any change model (SACM), a SAM-based zero-shot CD model, can yield class-agnostic masks with clear contours for changed instances. This paper proposes a novel WSCD framework that CAM-derived seeds with SACM to improve pixel-level pseudo labels. The framework consists of layer-wise CAM fusion (LCF), local points prompting for SACM (LPPS), and SACM-refined pseudo labels (SPRL). LCF aggregates low-level spatial information and high-level semantics to activate comprehensive change maps. Meanwhile, LPPS converts LCF-derived CAM into relevant local points as the query for SACM, ensuring accurate mask generation. Further, SPRL refines pseudo labels by leveraging seeds from LCF and detailed boundary masks from LPPS, mitigating partial and false activation. Finally, refined pseudo labels are used to train the CD model. Our approach achieves state-of-the-art performance on both LEVIR-CD and WHU-CD datasets.` <br>
+`LCF generates a more comprehensive change activation map. LPPS converts the CAM into query points for SACM, producing more accurate and reliable change masks. SRPL combines coarse seeds with precise boundary masks to refine pseudo-label quality.` <br>
 
 ### 2. Usage
 #### 2.1 Dataset
@@ -21,6 +21,7 @@ Repo is created in 2025-01-22. Code will come soon.
     - [`WHU-CD`](https://www.dropbox.com/s/r76a00jcxp5d3hl/WHU-CD-256.zip?dl=0)
 - Crop all datasets into 256x256 patches.
 - Generate list file as `ls -R ./label/* > test.txt`
+- Generate image-level annotations as `...`
 - Prepare datasets into following structure and set their path in `train.py` and `test.py`
   ```
   ├─A
@@ -51,6 +52,6 @@ Repo is created in 2025-01-22. Code will come soon.
 #### 2.3 Installation
 + Clone this repo:
     ```shell
-    git clone https://github.com/Youzhihui/RFANet.git
-    cd RFANet
+    git clone xxxxxx
+    cd xxxxxx
     ```
