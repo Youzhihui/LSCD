@@ -50,7 +50,7 @@ code is still being organized and constantly updated
   ```
 #### 2.2 Setting up conda environment
 + Prerequisites for Python:
-    - Creating a virtual environment in terminal: `conda create -n RFANet python=3.8`
+    - Creating a virtual environment in terminal: `conda create -n LSCD python=3.8`
     - Installing necessary packages: `pip install -r requirements.txt `
 
 #### 2.3 Installation
