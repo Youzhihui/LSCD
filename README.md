@@ -23,7 +23,9 @@ code is still being organized and constantly updated
     - [`WHU-CD`](https://www.dropbox.com/s/r76a00jcxp5d3hl/WHU-CD-256.zip?dl=0)
 - Crop all datasets into 256x256 patches.
 - Generate list file as `ls -R ./label/* > test.txt`
-- Generate image-level annotations as `...`     ./datasets/dataset-name/imagelevel_labels.npy
+- Generate image-level annotations as `...`
+    - ./datasets/LEVIR-CD/imagelevel_labels.npy
+    - ./datasets/WHU-CD/imagelevel_labels.npy
 - Prepare datasets into following structure and set their path in `train.py` and `test.py`
   ```
   ├─A
