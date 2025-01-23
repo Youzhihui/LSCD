@@ -50,7 +50,7 @@ Repo is created in 2025-01-22. Code will come soon.
   ```
 #### 2.2 Setting up conda environment
 + Prerequisites for Python:
-    - Creating a virtual environment in terminal: `conda create -n LSCD python=3.8`
+    - Creating a virtual environment in terminal: `conda create -n EWSCD python=3.8`
     - Installing necessary packages: `pip install -r requirements.txt `
 
 #### 2.3 Installation
