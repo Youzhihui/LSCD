@@ -1,4 +1,4 @@
-# <p align=center>`Weakly Supervised Change Detection with Layer-wise CAM Fusion and SACM-refined Pseudo Labels`</p>
+# <p align=center>`Enhancing Weakly Supervised Change Detection with Layer-wise CAM Fusion and SACM-refined Pseudo Labels`</p>
 
 
 ## News
