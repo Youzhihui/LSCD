@@ -356,32 +356,32 @@ def get_bkg_scores(dataset):
 
 
 if __name__ == "__main__":
-    for deterministic in [True]:
-        for dataset in ["WHU"]:
-            args = parser.parse_args()
-            args.config = "configs/{}.yaml".format(dataset)
-            cfg = OmegaConf.load(args.config)
+    
+    dataset = "WHU"
+    args = parser.parse_args()
+    args.config = "configs/{}.yaml".format(dataset)
+    cfg = OmegaConf.load(args.config)
 
-            timestamp = "{0:%Y-%m-%d-%H-%M}".format(datetime.datetime.now())
-            timestamp = "Net2_MiT_" + timestamp
-            s2, s3, s4 = get_bkg_scores(dataset)
-            cfg.cam.bkg_score2 = s2
-            cfg.cam.bkg_score3 = s3
-            cfg.cam.bkg_score4 = s4
-            cfg.work_dir.dir = "work_dir_{}-{}-s2={}_s3={}_s4={}".format(dataset, deterministic, cfg.cam.bkg_score2,
-                                                                         cfg.cam.bkg_score3, cfg.cam.bkg_score4)
+    timestamp = "{0:%Y-%m-%d-%H-%M}".format(datetime.datetime.now())
+    timestamp = "Net2_MiT_" + timestamp
+    s2, s3, s4 = get_bkg_scores(dataset)
+    cfg.cam.bkg_score2 = s2
+    cfg.cam.bkg_score3 = s3
+    cfg.cam.bkg_score4 = s4
+    cfg.work_dir.dir = "work_dir_{}-{}-s2={}_s3={}_s4={}".format(dataset, deterministic, cfg.cam.bkg_score2,
+                                                                 cfg.cam.bkg_score3, cfg.cam.bkg_score4)
 
-            cfg.work_dir.ckpt_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.ckpt_dir, timestamp)
-            cfg.work_dir.pred_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.pred_dir)
-            cfg.work_dir.logger_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.logger_dir, timestamp)
+    cfg.work_dir.ckpt_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.ckpt_dir, timestamp)
+    cfg.work_dir.pred_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.pred_dir)
+    cfg.work_dir.logger_dir = os.path.join(cfg.work_dir.dir, cfg.work_dir.logger_dir, timestamp)
 
-            os.makedirs(cfg.work_dir.ckpt_dir, exist_ok=True)
-            os.makedirs(cfg.work_dir.pred_dir, exist_ok=True)
-            os.makedirs(cfg.work_dir.logger_dir, exist_ok=True)
+    os.makedirs(cfg.work_dir.ckpt_dir, exist_ok=True)
+    os.makedirs(cfg.work_dir.pred_dir, exist_ok=True)
+    os.makedirs(cfg.work_dir.logger_dir, exist_ok=True)
 
-            logger = setup_logger(filename=os.path.join(cfg.work_dir.dir, timestamp + '.log'))
-            logger.info('\nargs: %s' % args)
-            logger.info('\nconfigs: %s' % cfg)
+    logger = setup_logger(filename=os.path.join(cfg.work_dir.dir, timestamp + '.log'))
+    logger.info('\nargs: %s' % args)
+    logger.info('\nconfigs: %s' % cfg)
 
-            setup_seed(seed=1, deterministic=deterministic)
-            train(cfg=cfg)
+    setup_seed(seed=1)
+    train(cfg=cfg)
