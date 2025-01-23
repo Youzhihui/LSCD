@@ -285,49 +285,6 @@ def train(cfg):
         bkg_cls = bkg_cls.to(device)
         _cls_labels = torch.cat((bkg_cls, cls_labels), dim=1)
 
-        # with torch.no_grad():
-        #     for i in range(b):
-        #         if cls_labels[0].item() == 1:
-        #             mask = torch.zeros_like(cam4[i, 0]).to(device)
-        #             cam_target = cam4[i, 0]
-        #             cam_target_flat = cam_target.view(-1)
-        #             argmax_indices = torch.argmax(cam_target_flat)
-        #             coord_h = argmax_indices // w
-        #             coord_w = argmax_indices % w
-        #             peak_max = torch.cat((coord_h.view(1, 1), coord_w.view(1, 1)), dim=-1)
-        #             peak_max = peak_max.cpu().detach().numpy()
-        #             # Local maximums
-        #             cam_target_np = cam_target.cpu().detach().numpy()
-        #             cam_filtered = ndi.maximum_filter(cam_target_np, size=3, mode='constant')
-        #             peaks_temp = peak_local_max(cam_filtered, min_distance=8)  # 5
-        #             peaks_valid = peaks_temp[cam_target_np[peaks_temp[:, 0], peaks_temp[:, 1]] > 0.5]
-        #             peaks = np.concatenate((peak_max, peaks_valid[1:]), axis=0)
-        #             for p in peaks:
-        #                 h_c, w_c = p
-        #                 for m in range(h_c-2, h_c+2):
-        #                     for n in range(w_c-2, w_c+2):
-        #                         if 0 <= m < 256 and 0 <= n < 256:
-        #                             mask[m, n] = 1
-        #             mask = mask.unsqueeze(dim=0).unsqueeze(dim=0)
-        #             m2 = F.adaptive_avg_pool2d(mask, (4, 4)).squeeze() > 0
-        #             m3 = F.adaptive_avg_pool2d(mask, (2, 2)).squeeze() > 0
-        #             label2[i, 0] = m2.float()
-        #             label3[i, 0] = m3.float()
-
-        # change classification loss
-        # c4 = F.interpolate(cam4, size=(16, 16), mode='bilinear', align_corners=False)
-        # cam_label4 = cam_to_label(c4, cls_label=cls_labels, bkg_score=cfg.cam.bkg_score4).float()
-        # with torch.no_grad():
-        #     for i in range(b):
-        #         if cls_labels[0].item() == 1:
-        #             c_label = cam_label4[i]
-        #             c_label = c_label.unsqueeze(dim=0).unsqueeze(dim=0)
-        #             m2 = F.adaptive_avg_pool2d(c_label, (4, 4)).squeeze() > 0.05
-        #             m3 = F.adaptive_avg_pool2d(c_label, (2, 2)).squeeze() > 0.05
-        #             label2[i, 0] = m2.float()
-        #             label3[i, 0] = m3.float()
-        #             mask2[i, 0] = m2.float()
-        #             mask3[i, 0] = m3.float()
         cc_loss2 = F.binary_cross_entropy_with_logits(cls_x2, cls_labels)
         cc_loss3 = F.binary_cross_entropy_with_logits(cls_x3, cls_labels)
         cc_loss4 = F.binary_cross_entropy_with_logits(cls_x4, cls_labels)
