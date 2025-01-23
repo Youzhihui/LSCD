@@ -1,7 +1,3 @@
-# 将 val数据集换为test，取消val(如ChangeFormer)
-
-# 将 val数据集换为test，取消val(如ChangeFormer)
-
 import argparse
 import os
 from collections import OrderedDict
