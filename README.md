@@ -9,7 +9,7 @@ Repo is created in 2025-01-22. Code will come soon.
 ### 1. Overview
 
 <p align="center">
-    <img src="assest/Overview.png"/> <br />
+    <img src="assets/Overview.png"/> <br />
 </p>
 
 `LCF generates a more comprehensive change activation map. LPPS converts the CAM into query points for SACM, producing more accurate and reliable change masks. SRPL combines coarse seeds with precise boundary masks to refine pseudo-label quality.` <br>
