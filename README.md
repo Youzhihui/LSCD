@@ -2,7 +2,7 @@
 
 
 ## News
-Repo is created in 2025-01-22. Code will come soon.
+Repo is created in 2025-01-26. Code will come soon.
 
 ## code is still being organized and constantly updated
 
@@ -12,7 +12,7 @@ Repo is created in 2025-01-22. Code will come soon.
     <img src="assets/Overview.png"/> <br />
 </p>
 
-`LCF generates a more comprehensive change activation map. LPPS converts the CAM into query points for SACM, producing more accurate and reliable change masks. SRPL combines coarse seeds with precise boundary masks to refine pseudo-label quality.` <br>
+`LCF generates a more comprehensive change activation map. LPPM converts the CAM into query points for SAM-based SACM, producing more accurate and reliable change masks. SRPL combines coarse seeds with precise boundary masks to refine pseudo-label quality.` <br>
 
 ### 2. Usage
 #### 2.1 Dataset
